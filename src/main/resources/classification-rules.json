@@ -1,0 +1,13 @@
+{
+   "defaultCategory": "Outros",
+   "categories": {
+      "Imagens": ["jpg", "jpeg", "png", "gif", "webp", "bmp", "svg", "heic"],
+      "Design": ["psd", "ai", "xcf", "indd", "sketch", "fig", "cdr"],
+      "Documentos": ["pdf", "doc", "docx", "odt", "txt", "rtf", "md"],
+      "Planilhas": ["xls", "xlsx", "ods", "csv"],
+      "Apresentacoes": ["ppt", "pptx", "odp"],
+      "Videos": ["mp4", "mkv", "avi", "mov", "webm"],
+      "Audios": ["mp3", "wav", "flac", "ogg", "m4a"],
+      "Compactados": ["zip", "rar", "7z", "tar", "gz"]
+   }
+}

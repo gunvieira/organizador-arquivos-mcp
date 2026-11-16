@@ -1,0 +1,15 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "classpath:/json-schemas/aplicar-organizacao.schema.json",
+   "title": "Aplicar Plano de Organização",
+   "description": "Aplica um plano de organização previamente gerado por 'sugerir_organizacao' a partir do seu plan_id, gravando journal e resolvendo conflitos de nome sem sobrescrever.",
+   "type": "object",
+   "properties": {
+      "plan_id": {
+         "type": "string",
+         "description": "Identificador único (UUID) do plano gerado por 'sugerir_organizacao'"
+      }
+   },
+   "required": [ "plan_id" ],
+   "additionalProperties": false
+}

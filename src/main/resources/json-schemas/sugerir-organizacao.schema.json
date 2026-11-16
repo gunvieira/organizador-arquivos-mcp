@@ -1,0 +1,19 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "classpath:/json-schemas/sugerir-organizacao.schema.json",
+   "title": "Sugerir Organização de Arquivos",
+   "description": "Gera um plano de organização (plan_id + movimentos propostos por categoria) sem mover nenhum arquivo no disco.",
+   "type": "object",
+   "properties": {
+      "path": {
+         "type": "string",
+         "description": "Caminho relativo à raiz autorizada (opcional, padrão é a raiz '.')"
+      },
+      "recursive": {
+         "type": "boolean",
+         "description": "Indica se arquivos em subdiretórios devem ser incluídos no plano (padrão: false)",
+         "default": false
+      }
+   },
+   "additionalProperties": false
+}

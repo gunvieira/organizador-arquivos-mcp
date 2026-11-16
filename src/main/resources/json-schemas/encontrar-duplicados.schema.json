@@ -1,0 +1,25 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "classpath:/json-schemas/encontrar-duplicados.schema.json",
+   "title": "Encontrar Arquivos Duplicados",
+   "description": "Identifica arquivos duplicados em 3 etapas (tamanho, hash parcial 64 KB e hash completo SHA-256), ignorando arquivos de 0 bytes e calculando o espaço desperdiçado.",
+   "type": "object",
+   "properties": {
+      "path": {
+         "type": "string",
+         "description": "Caminho relativo à raiz autorizada (opcional, padrão é a raiz '.')"
+      },
+      "recursive": {
+         "type": "boolean",
+         "description": "Indica se subdiretórios devem ser analisados (padrão: true)",
+         "default": true
+      },
+      "min_size": {
+         "type": "integer",
+         "minimum": 1,
+         "default": 1,
+         "description": "Tamanho mínimo em bytes para considerar um arquivo (padrão: 1; arquivos de 0 bytes são sempre ignorados)"
+      }
+   },
+   "additionalProperties": false
+}

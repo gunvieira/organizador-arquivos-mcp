@@ -1,0 +1,14 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "classpath:/json-schemas/desfazer-organizacao.schema.json",
+   "title": "Desfazer Organização",
+   "description": "Reverte o último lote de organização aplicado (ou um batch_id específico) em ordem inversa, sem sobrescrever locais originais ocupados.",
+   "type": "object",
+   "properties": {
+      "batch_id": {
+         "type": "string",
+         "description": "Identificador opcional do lote (batch_id); se omitido, desfaz o último lote aplicado ainda não desfeito"
+      }
+   },
+   "additionalProperties": false
+}

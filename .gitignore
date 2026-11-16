@@ -1,0 +1,18 @@
+# Diretórios de build
+target/
+server/
+dist-client/
+
+# Configurações de ambiente local e estado de execução
+.env
+.mcp-organizer/
+
+# IDEs
+.idea/
+.vscode/
+.classpath
+.project
+.settings/
+
+# Logs
+*.log

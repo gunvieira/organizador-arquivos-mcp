@@ -1,0 +1,55 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "classpath:/json-schemas/buscar-arquivos.schema.json",
+   "title": "Buscar Arquivos",
+   "description": "Busca arquivos dentro do diretório autorizado combinando múltiplos filtros (nome glob, categoria, extensões, tamanho e data de modificação).",
+   "type": "object",
+   "properties": {
+      "name": {
+         "type": "string",
+         "description": "Padrão glob para o nome do arquivo (ex.: *.pdf, relatorio*)"
+      },
+      "category": {
+         "type": "string",
+         "description": "Nome da categoria (ex.: Imagens, Design, Documentos, Planilhas, Apresentacoes, Videos, Audios, Compactados, Outros)"
+      },
+      "extensions": {
+         "type": "array",
+         "items": {
+            "type": "string"
+         },
+         "description": "Lista de extensões a filtrar (ex.: [\"pdf\", \"docx\"])"
+      },
+      "min_size": {
+         "type": "integer",
+         "minimum": 0,
+         "description": "Tamanho mínimo em bytes"
+      },
+      "max_size": {
+         "type": "integer",
+         "minimum": 0,
+         "description": "Tamanho máximo em bytes"
+      },
+      "modified_after": {
+         "type": "string",
+         "description": "Data mínima de modificação no formato ISO YYYY-MM-DD"
+      },
+      "modified_before": {
+         "type": "string",
+         "description": "Data máxima de modificação no formato ISO YYYY-MM-DD"
+      },
+      "recursive": {
+         "type": "boolean",
+         "description": "Indica se a busca deve incluir subdiretórios (padrão: true)",
+         "default": true
+      },
+      "max_results": {
+         "type": "integer",
+         "minimum": 1,
+         "maximum": 100,
+         "default": 20,
+         "description": "Quantidade máxima de resultados (1..100, padrão: 20)"
+      }
+   },
+   "additionalProperties": false
+}

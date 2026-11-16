@@ -1,0 +1,26 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "classpath:/json-schemas/listar-maiores.schema.json",
+   "title": "Listar Maiores Arquivos",
+   "description": "Lista os maiores arquivos dentro do diretório autorizado em ordem decrescente de tamanho.",
+   "type": "object",
+   "properties": {
+      "path": {
+         "type": "string",
+         "description": "Caminho relativo à raiz autorizada (opcional, padrão é a raiz '.')"
+      },
+      "limit": {
+         "type": "integer",
+         "minimum": 1,
+         "maximum": 100,
+         "default": 10,
+         "description": "Quantidade máxima de arquivos a listar (1..100, padrão: 10)"
+      },
+      "recursive": {
+         "type": "boolean",
+         "description": "Indica se subdiretórios devem ser incluídos (padrão: true)",
+         "default": true
+      }
+   },
+   "additionalProperties": false
+}

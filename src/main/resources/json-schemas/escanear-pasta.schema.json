@@ -1,0 +1,19 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "classpath:/json-schemas/escanear-pasta.schema.json",
+   "title": "Escanear Pasta",
+   "description": "Escaneia uma pasta dentro do diretório autorizado, retornando o total de arquivos, espaço ocupado por categoria e uma amostra dos arquivos.",
+   "type": "object",
+   "properties": {
+      "path": {
+         "type": "string",
+         "description": "Caminho relativo à raiz autorizada (opcional, padrão é a raiz '.')"
+      },
+      "recursive": {
+         "type": "boolean",
+         "description": "Indica se subdiretórios devem ser escaneados recursivamente (padrão: true)",
+         "default": true
+      }
+   },
+   "additionalProperties": false
+}
