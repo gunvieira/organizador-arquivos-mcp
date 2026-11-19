@@ -69,7 +69,7 @@ public class SuggestOrganizationTool implements McpToolDefinition {
          String path = args.get(McpConsts.ATTR_PATH) instanceof String s
                        ? s
                        : null;
-         // Padrão false para sugerir_organizacao conforme especificação 3.4
+
          boolean recursive = Boolean.TRUE.equals(
             args.get(McpConsts.ATTR_RECURSIVE));
 
