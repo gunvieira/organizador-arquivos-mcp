@@ -39,6 +39,7 @@ public class ConflictResolver {
       String baseName;
       String extensionWithDot;
 
+      // Separa o nome base da extensão para inserir o sufixo numérico antes do ponto
       int lastDot = fileName.lastIndexOf('.');
       if (lastDot > 0 && lastDot < fileName.length() - 1) {
          baseName         = fileName.substring(0, lastDot);
@@ -49,6 +50,7 @@ public class ConflictResolver {
          extensionWithDot = "";
       }
 
+      // Incrementa o sufixo (1), (2), ... até encontrar um caminho livre no destino
       int counter = 1;
       while (true) {
          String candidateName = "%s (%d)%s".formatted(

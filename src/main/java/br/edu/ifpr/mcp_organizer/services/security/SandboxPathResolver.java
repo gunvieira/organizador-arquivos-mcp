@@ -122,6 +122,7 @@ public class SandboxPathResolver {
 
       String trimmed = relativePath.trim();
 
+      // Rejeita caminhos absolutos tanto no formato POSIX quanto Windows (ex.: C:\, \\)
       if (trimmed.startsWith("/") || trimmed.startsWith("\\") ||
           trimmed.matches("^[a-zA-Z]:.*"))
          throw new IllegalArgumentException(
@@ -142,6 +143,7 @@ public class SandboxPathResolver {
             "Caminho absoluto não é permitido (informe um caminho relativo à raiz): " +
             relativePath);
 
+      // Percorre cada segmento para impedir travessia de diretório ('..')
       for (Path segment : parsed) {
          String segStr = segment.toString();
          if ("..".equals(segStr))
@@ -235,6 +237,7 @@ public class SandboxPathResolver {
       return root.relativize(normalized).toString().replace('\\', '/');
    }
 
+   // Valida cada segmento existente do caminho para garantir que não há symlinks nem fuga da raiz
    private void verifyNoSymlinksAndBounds(Path normalizedTarget) {
       Path rel = root.relativize(normalizedTarget);
       Path current = root;

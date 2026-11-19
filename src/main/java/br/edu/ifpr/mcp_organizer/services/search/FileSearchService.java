@@ -61,6 +61,7 @@ public class FileSearchService {
 
       validateCriteria(criteria);
 
+      // Normaliza a categoria para o nome canônico antes de montar os predicados de busca
       String canonicalCat = criteria.getCategory() != null
          ? rules.resolveCanonicalCategory(criteria.getCategory())
          : null;
@@ -83,6 +84,7 @@ public class FileSearchService {
       List<FileInfo> matched = new ArrayList<>();
       boolean resultLimitReached = false;
 
+      // Aplica o filtro composto e interrompe ao atingir max_results para evitar excesso de saída
       for (FileInfo info : scanResult.files()) {
          if (spec.test(info)) {
             if (matched.size() == effectiveCriteria.getMaxResults()) {

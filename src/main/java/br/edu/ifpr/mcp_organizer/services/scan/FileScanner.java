@@ -104,6 +104,7 @@ public class FileScanner {
                   if (dir.equals(targetDir))
                      return FileVisitResult.CONTINUE;
 
+                  // Ignora a pasta interna de metadados e qualquer link simbólico
                   if (pathResolver.isAppDataPath(dir) ||
                       Files.isSymbolicLink(dir) ||
                       attrs.isSymbolicLink())
@@ -118,6 +119,7 @@ public class FileScanner {
                      return FileVisitResult.SKIP_SUBTREE;
                   }
 
+                  // Interrompe a varredura ao atingir o limite máximo de entradas examinadas
                   entriesVisited[0]++;
                   if (entriesVisited[0] > maxEntriesScanned) {
                      limitReached[0] = true;
@@ -141,6 +143,7 @@ public class FileScanner {
                      return FileVisitResult.CONTINUE;
                   }
 
+                  // Interrompe a varredura ao atingir o limite máximo de entradas examinadas
                   entriesVisited[0]++;
                   if (entriesVisited[0] > maxEntriesScanned) {
                      limitReached[0] = true;

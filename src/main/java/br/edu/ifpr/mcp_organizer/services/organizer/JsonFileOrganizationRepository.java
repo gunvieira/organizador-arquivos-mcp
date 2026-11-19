@@ -44,6 +44,7 @@ public class JsonFileOrganizationRepository implements OrganizationRepository {
       if (plan == null || plan.planId() == null || plan.planId().isBlank())
          throw new IllegalArgumentException("Plano inválido para persistência.");
 
+      // Atualiza o plano existente (upsert) ou adiciona um novo ao final da lista
       List<OrganizationPlan> plans = new ArrayList<>(findAllPlans());
       boolean replaced = false;
       for (int i = 0; i < plans.size(); i++) {
@@ -140,6 +141,10 @@ public class JsonFileOrganizationRepository implements OrganizationRepository {
       }
    }
 
+   /**
+    * Verifica se um lote está apto para reversão (status CONCLUIDO ou PARCIAL
+    * com pelo menos um movimento concluído).
+    */
    public static boolean isUndoable(OrganizationBatch batch) {
       if (batch == null || batch.moves() == null)
          return false;

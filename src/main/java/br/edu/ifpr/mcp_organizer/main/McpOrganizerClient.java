@@ -35,6 +35,10 @@ import io.modelcontextprotocol.spec.McpSchema.TextResourceContents;
 import io.modelcontextprotocol.spec.McpSchema.Tool;
 import tools.jackson.databind.json.JsonMapper;
 
+/**
+ * Aplicação Cliente MCP interativa em linha de comando que inicia o servidor
+ * via transporte STDIO e descobre dinamicamente tools, resources e prompts.
+ */
 public class McpOrganizerClient {
    private static final Logger LOG =
                             LoggerFactory.getLogger(McpOrganizerClient.class);
@@ -52,6 +56,7 @@ public class McpOrganizerClient {
                notification.data());
    }
 
+   // Monta o comando de inicialização do processo servidor e o canal STDIO
    private McpSyncClient createClient(String root, boolean isProperty) {
       File serverJar = new File(SERVER_PATH);
       if (!serverJar.isFile()) {
@@ -225,6 +230,7 @@ public class McpOrganizerClient {
       }
    }
 
+   // Lê os parâmetros definidos no JSON Schema da ferramenta e solicita ao usuário
    private Map<String, Object> readArguments(Tool tool, Scanner scanner) {
       Map<String, Object> arguments = new LinkedHashMap<>();
       Map<String, Object> schema    = tool.inputSchema();
@@ -576,6 +582,7 @@ public class McpOrganizerClient {
       String  mcpFilesRoot     = "";
       boolean isProperty       = mcpFilesRootProp != null;
 
+      // Prioridade do diretório autorizado: argumento CLI > propriedade JVM > variável de ambiente
       if (mcpFilesRootArg != null) mcpFilesRoot = mcpFilesRootArg;
       else if (mcpFilesRootProp != null) mcpFilesRoot = mcpFilesRootProp;
       else if (mcpFilesRootVar != null) mcpFilesRoot = mcpFilesRootVar;

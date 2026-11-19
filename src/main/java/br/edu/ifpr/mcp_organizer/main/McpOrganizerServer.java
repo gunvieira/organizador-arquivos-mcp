@@ -50,6 +50,10 @@ public class McpOrganizerServer {
          prompt.register(mcp);
    }
 
+   /**
+    * Configura o transporte STDIO, o mapeador JSON (Jackson 3) e as capacidades
+    * anunciadas pelo servidor MCP (tools, resources, prompts e logging).
+    */
    private SyncSpecification<SingleSessionSyncSpecification> configMcpServer() {
       JacksonMcpJsonMapper         jsonMapper        =
                                      new JacksonMcpJsonMapper(new JsonMapper());
@@ -82,6 +86,7 @@ public class McpOrganizerServer {
       SyncSpecification<SingleSessionSyncSpecification> srv = configMcpServer();
 
       try {
+         // Registra todos os componentes fornecidos pela composição de dependências
          registerTools(srv, composition);
          registerResources(srv, composition);
          registerPrompts(srv, composition);
