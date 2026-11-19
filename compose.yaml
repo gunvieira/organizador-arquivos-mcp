@@ -55,8 +55,8 @@ services:
       volumes:
          - ./server:${MCP_CONTAINER}/server:ro
          - type: bind
-            source: ${MCP_FILES_HOST}
-            target: ${MCP_FILES_CONTAINER}
+           source: ${MCP_FILES_HOST}
+           target: ${MCP_FILES_CONTAINER}
 
       command:
          - -Dmcp.files.root=${MCP_FILES_CONTAINER}
